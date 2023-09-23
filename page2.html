@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PAGE 2</title>
+    <link rel="stylesheet" href="dist/bootstrap-5.2.3/css/bootstrap.min.css"/>
+    <style>
+        [v-cloak] { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <h3>Page 2</h3>
+        <p>Intro to Vue.js</p>
+
+        <div id="app">
+            <div v-cloak>
+                <!-- First name -->
+                <div class="form-group mb-3">
+                    <input v-model="firstName" type="text" class="form-control" placeholder="First name"/>
+                </div>
+
+                <!-- Last name -->
+                <div class="form-group mb-3">
+                    <input v-model="lastName" type="text" class="form-control" placeholder="Last name"/>
+                </div>
+
+                <!-- Change First name or Last name -->
+                <div class="form-group mb-3">
+                    <button @click="firstName = 'Coco'" class="btn btn-outline-success me-2">Change Firstname</button>
+                    <button @click="lastName = 'Martin'" class="btn btn-outline-success me-2">Change Lastname</button>
+                </div>
+
+                <!-- Age -->
+                <div class="form-group mb-3">
+                    <input v-model="age" type="number" class="form-control" placeholder="Age"/>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group mb-3">
+                    <h6>Gender</h6>
+                    <label class="me-4"><input v-model="gender" type="radio" name="gender" value="male"/> Male</label>
+                    <label class="me-4"><input v-model="gender" type="radio" name="gender" value="female"/> Female</label>
+                    <label class="me-4"><input v-model="gender" type="radio" name="gender" value="other"/> Other</label>
+                </div>
+
+                <!-- Favorite Colors -->
+                <div class="form-group mb-3">
+                    <h6>Favorite Colors</h6>
+                    <label class="me-4"><input v-model="favColors" type="checkbox" name="gender" value="red"/> Red</label>
+                    <label class="me-4"><input v-model="favColors" type="checkbox" name="gender" value="green"/> Green</label>
+                    <label class="me-4"><input v-model="favColors" type="checkbox" name="gender" value="blue"/> Blue</label>
+                    <label class="me-4"><input v-model="favColors" type="checkbox" name="gender" value="black"/> Black</label>
+                    <label class="me-4"><input v-model="favColors" type="checkbox" name="gender" value="orange"/> Orange</label>
+                </div>
+
+                <!-- Output -->
+                <div>
+                    <hr/>
+
+                    <!-- Greetings -->
+                    <p>
+                        Hello there {{ firstName }} {{ lastName }}!
+                        You are {{ age }} years old!
+                        And you are {{ gender }}.
+                    </p>
+
+                    <div class="row">
+                        <!-- Can vote / Cannot vote -->
+                        <div class="col-md-6">
+                            <div v-if="age >= 18" class="alert alert-success fw-bold">
+                                You can vote!
+                            </div>
+                            <div v-else-if="age == 17" class="alert alert-info fw-bold">
+                                You can vote next year!
+                            </div>
+                            <div v-else class="alert alert-danger fw-bold">
+                                You cannot vote yet!
+                            </div>
+                        </div>
+
+                        <!-- Favorite colors list -->
+                        <div class="col-md-6">
+                            <p>
+                                <i>Here are your favorite colors:</i>
+                            </p>
+                            <ul>
+                                <li v-for="color in favColors" :style="{ 'color': color }">
+                                    {{ color.toUpperCase() }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="dist/vue-3.3.4/vue.global.js"></script>
+    <script src="js/main2.js"></script>
+</body>
+</html>
